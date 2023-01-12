@@ -1,9 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { Container } from './styles';
+import { MdSearch } from 'react-icons/md';
+import githubLogo from '../../assets/images/github-logo.svg';
 
-function MainPage() {
-  return <Container>Initial github dashboard project structure</Container>;
-}
+import { Container, Logo, Title, Form, Input, Button } from './styles';
+
+const MainPage = () => {
+  const [login, setLogin] = useState('');
+
+  return (
+    <Container>
+      <Logo src={githubLogo} alt="API Github" />
+      <Title>API GitHub</Title>
+      <Form>
+        <Input placeholder="Usuário" value={login} onChange={(event) => setLogin(event.target.value)} />
+        <Button>
+          <MdSearch size={42} />
+        </Button>
+      </Form>
+    </Container>
+  );
+};
 
 export default MainPage;
