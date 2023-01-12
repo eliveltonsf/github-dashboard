@@ -1,11 +1,12 @@
 import React from 'react';
 
-import { Container } from './styles';
+import { Container, Sidebar, Main } from './styles';
 
 const RepositoriesPage = () => {
   return (
     <Container>
-      <h1>Repositories</h1>
+      <Sidebar>Sidebar</Sidebar>
+      <Main>Main</Main>
     </Container>
   );
 };
