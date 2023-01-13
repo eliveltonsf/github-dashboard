@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Container, Sidebar, Main } from './styles';
-import Profile from './Profile';
+import Profile from '../../components/Profile';
 
 const RepositoriesPage = () => {
   return (
