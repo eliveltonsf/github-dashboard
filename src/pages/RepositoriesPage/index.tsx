@@ -1,9 +1,12 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from 'react';
 
 import { Container, Sidebar, Main } from './styles';
 import Profile from '../../components/Profile';
 import Filter from '../../components/Filter';
 import Repositories from '../../components/Repositories';
+
+import { getLangsFrom } from '../../services/getLangsFrom';
 
 const RepositoriesPage = () => {
   const user = {
@@ -19,50 +22,57 @@ const RepositoriesPage = () => {
 
   const repositories = [
     {
+      id: 1,
       name: 'apirest-projects-and-tasks',
       description: 'Creating an Api Restful with Nodejs and expressJS to register projects and their respective tasks.',
       html_url: 'https://github.com/eliveltonsf/apirest-projects-and-tasks',
       language: 'JavaScript',
     },
     {
+      id: 2,
       name: 'apirest-projects-and-tasks',
       description: 'Creating an Api Restful with Nodejs and expressJS to register projects and their respective tasks.',
       html_url: 'https://github.com/eliveltonsf/apirest-projects-and-tasks',
       language: 'JavaScript',
     },
     {
+      id: 3,
       name: 'apirest-projects-and-tasks',
       description: 'Creating an Api Restful with Nodejs and expressJS to register projects and their respective tasks.',
       html_url: 'https://github.com/eliveltonsf/apirest-projects-and-tasks',
       language: 'PHP',
     },
     {
+      id: 4,
       name: 'apirest-projects-and-tasks',
       description: 'Creating an Api Restful with Nodejs and expressJS to register projects and their respective tasks.',
       html_url: 'https://github.com/eliveltonsf/apirest-projects-and-tasks',
       language: 'Ruby',
     },
     {
-      name: 'apirest-projects-and-tasks',
-      description: 'Creating an Api Restful with Nodejs and expressJS to register projects and their respective tasks.',
-      html_url: 'https://github.com/eliveltonsf/apirest-projects-and-tasks',
-      language: 'Java',
-    },
-    {
+      id: 5,
       name: 'apirest-projects-and-tasks',
       description: 'Creating an Api Restful with Nodejs and expressJS to register projects and their respective tasks.',
       html_url: 'https://github.com/eliveltonsf/apirest-projects-and-tasks',
       language: 'Typescript',
     },
+    {
+      id: 6,
+      name: 'apirest-projects-and-tasks',
+      description: 'Creating an Api Restful with Nodejs and expressJS to register projects and their respective tasks.',
+      html_url: 'https://github.com/eliveltonsf/apirest-projects-and-tasks',
+      language: 'Typescript',
+    },
+    {
+      id: 7,
+      name: 'apirest-projects-and-tasks',
+      description: 'Creating an Api Restful with Nodejs and expressJS to register projects and their respective tasks.',
+      html_url: 'https://github.com/eliveltonsf/apirest-projects-and-tasks',
+      language: 'C#',
+    },
   ];
 
-  const languages = [
-    { name: 'JavaScript', count: 5, color: '#f1c40f' },
-    { name: 'Shell', count: 2, color: '#95a5a6' },
-    { name: 'PHP', count: 2, color: '#3498db' },
-    { name: 'Ruby', count: 2, color: '#e74c3c' },
-    { name: 'Typescript', count: 2, color: '#2980b9' },
-  ];
+  const languages = getLangsFrom({ repositories });
 
   return (
     <Container>
@@ -71,7 +81,7 @@ const RepositoriesPage = () => {
         <Filter languages={languages} />
       </Sidebar>
       <Main>
-        <Repositories />
+        <Repositories repositories={repositories} />
       </Main>
     </Container>
   );

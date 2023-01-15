@@ -1,14 +1,24 @@
 import React from 'react';
 import { Container, Name, Description, Footer, Lang, Link } from './styles';
 
-const Repository = () => {
+interface IRepositoryProps {
+  repository: {
+    id: number;
+    name: string;
+    description: string;
+    html_url: string;
+    language: string;
+  };
+}
+
+const Repository = ({ repository }: IRepositoryProps) => {
   return (
     <Container color="#f37272">
-      <Name>github-dashboard</Name>
-      <Description>Descrição do repositoriot</Description>
+      <Name>{repository.name}</Name>
+      <Description>{repository.description}</Description>
       <Footer color="#f37272">
-        <Lang>Typescript</Lang>
-        <Link href="https://github.com/eliveltonsf/github-dashboard" target="_blank">
+        <Lang>{repository.language}</Lang>
+        <Link href={repository.html_url} target="_blank">
           Ver
         </Link>
       </Footer>
