@@ -2,14 +2,12 @@ import React from 'react';
 
 import { Container, Selector, Cleaner } from './styles';
 
-const Filter = () => {
-  const langs = [
-    { name: 'JavaScript', count: 5, color: '#f1c40f' },
-    { name: 'Shell', count: 2, color: '#95a5a6' },
-    { name: 'PHP', count: 2, color: '#3498db' },
-  ];
+interface IFilterProps {
+  languages: { name: string; count: number; color: string }[];
+}
 
-  const selectors = langs.map(({ name, count, color }, index) => (
+const Filter = ({ languages }: IFilterProps) => {
+  const selectors = languages.map(({ name, count, color }, index) => (
     <Selector key={index} color={color}>
       <span>{name}</span>
       <span>{count}</span>
