@@ -17,6 +17,45 @@ const RepositoriesPage = () => {
     location: 'Fortaleza - CE',
   };
 
+  const repositories = [
+    {
+      name: 'apirest-projects-and-tasks',
+      description: 'Creating an Api Restful with Nodejs and expressJS to register projects and their respective tasks.',
+      html_url: 'https://github.com/eliveltonsf/apirest-projects-and-tasks',
+      language: 'JavaScript',
+    },
+    {
+      name: 'apirest-projects-and-tasks',
+      description: 'Creating an Api Restful with Nodejs and expressJS to register projects and their respective tasks.',
+      html_url: 'https://github.com/eliveltonsf/apirest-projects-and-tasks',
+      language: 'JavaScript',
+    },
+    {
+      name: 'apirest-projects-and-tasks',
+      description: 'Creating an Api Restful with Nodejs and expressJS to register projects and their respective tasks.',
+      html_url: 'https://github.com/eliveltonsf/apirest-projects-and-tasks',
+      language: 'PHP',
+    },
+    {
+      name: 'apirest-projects-and-tasks',
+      description: 'Creating an Api Restful with Nodejs and expressJS to register projects and their respective tasks.',
+      html_url: 'https://github.com/eliveltonsf/apirest-projects-and-tasks',
+      language: 'Ruby',
+    },
+    {
+      name: 'apirest-projects-and-tasks',
+      description: 'Creating an Api Restful with Nodejs and expressJS to register projects and their respective tasks.',
+      html_url: 'https://github.com/eliveltonsf/apirest-projects-and-tasks',
+      language: 'Java',
+    },
+    {
+      name: 'apirest-projects-and-tasks',
+      description: 'Creating an Api Restful with Nodejs and expressJS to register projects and their respective tasks.',
+      html_url: 'https://github.com/eliveltonsf/apirest-projects-and-tasks',
+      language: 'Typescript',
+    },
+  ];
+
   const languages = [
     { name: 'JavaScript', count: 5, color: '#f1c40f' },
     { name: 'Shell', count: 2, color: '#95a5a6' },
