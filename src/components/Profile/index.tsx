@@ -3,32 +3,53 @@ import React from 'react';
 import { MdGroup, MdLocationCity, MdWork, MdLink } from 'react-icons/md';
 
 import { Container, Header, Avatar, Login, Name, Inner, Data } from './styles';
+import { preProcessFile } from 'typescript';
+import { checkPropTypes } from 'prop-types';
 
-const Profile = () => {
+interface IProfileProps {
+  user: {
+    name: string;
+    login: string;
+    avatar_url: string;
+    followers: number;
+    following: number;
+    company: string;
+    blog: string;
+    location: string;
+  };
+}
+
+const Profile = ({ user }: IProfileProps) => {
   return (
     <Container>
       <Header>
-        <Avatar src="https://github.com/eliveltonsf.png" alt="Elivelton Ferreira"></Avatar>
-        <Login>eliveltonsf</Login>
-        <Name>Elivelton Ferreira</Name>
+        <Avatar src={user.avatar_url} alt={user.name}></Avatar>
+        <Login>{user.login}</Login>
+        <Name>{user.name}</Name>
       </Header>
       <Inner>
         <Data>
           <MdGroup size={20} />
-          30&nbsp;<i>seguidores</i>&nbsp;&middot;&nbsp;10&nbsp;<i>seguindo</i>
+          {user.following}&nbsp;<i>seguidores</i>&nbsp;&middot;&nbsp; {user.followers}&nbsp;<i>seguindo</i>
         </Data>
-        <Data>
-          <MdWork size={20} />
-          EF Development
-        </Data>
-        <Data>
-          <MdLocationCity size={20} />
-          Fortaleza CE{' '}
-        </Data>
-        <Data>
-          <MdLink size={20} />
-          <a href="https://www.linkedin.com/in/eliveltonsf/">Linkedin/eliveltonsf</a>
-        </Data>
+        {user.company && (
+          <Data>
+            <MdWork size={20} />
+            {user.company}
+          </Data>
+        )}
+        {user.location && (
+          <Data>
+            <MdLocationCity size={20} />
+            {user.location}
+          </Data>
+        )}
+        {user.blog && (
+          <Data>
+            <MdLink size={20} />
+            <a href={`\${user.blog}`}>{user.blog}</a>
+          </Data>
+        )}
       </Inner>
     </Container>
   );

@@ -6,10 +6,21 @@ import Filter from '../../components/Filter';
 import Repositories from '../../components/Repositories';
 
 const RepositoriesPage = () => {
+  const user = {
+    name: 'Elivelton Ferreira',
+    login: 'eliveltonsf',
+    avatar_url: 'https://avatars.githubusercontent.com/u/17456800?v=4',
+    followers: 36,
+    following: 59,
+    company: '',
+    blog: '',
+    location: 'Fortaleza - CE',
+  };
+
   return (
     <Container>
       <Sidebar>
-        <Profile />
+        <Profile user={user} />
         <Filter />
       </Sidebar>
       <Main>
