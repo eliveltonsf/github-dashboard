@@ -23,8 +23,8 @@ export const Selector = styled.button`
   width: 100%;
   min-height: 2rem;
   border: none;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
   transition: background 0.3s, transform 0.3s;
   padding: 0 1rem;
 
