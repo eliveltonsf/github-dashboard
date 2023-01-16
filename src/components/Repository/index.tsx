@@ -1,5 +1,8 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { Container, Name, Description, Footer, Lang, Link } from './styles';
+import { langColors } from '../../services/config';
 
 interface IRepositoryProps {
   repository: {
@@ -11,12 +14,19 @@ interface IRepositoryProps {
   };
 }
 
+interface IState {
+  [key: string]: string;
+}
+
 const Repository = ({ repository }: IRepositoryProps) => {
+  const lang: keyof IState = repository.language && repository.language.toLowerCase();
+  //@ts-ignore
+  const color = langColors[lang];
   return (
-    <Container color="#f37272">
+    <Container color={color}>
       <Name>{repository.name}</Name>
       <Description>{repository.description}</Description>
-      <Footer color="#f37272">
+      <Footer color={color}>
         <Lang>{repository.language}</Lang>
         <Link href={repository.html_url} target="_blank">
           Ver

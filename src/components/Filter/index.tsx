@@ -4,11 +4,18 @@ import { Container, Selector, Cleaner } from './styles';
 
 interface IFilterProps {
   languages: { name: string; count: number; color: string }[];
+  currentLanguage: string;
+  onClick: (name: string) => void;
 }
 
-const Filter = ({ languages }: IFilterProps) => {
-  const selectors = languages.map(({ name, count, color }, index) => (
-    <Selector key={index} color={color}>
+const Filter = ({ languages, currentLanguage, onClick }: IFilterProps) => {
+  const selectors = languages.map(({ name, count, color }) => (
+    <Selector
+      key={name.toLowerCase()}
+      color={color}
+      className={currentLanguage === name ? 'selected' : ''}
+      onClick={() => onClick && onClick(name)}
+    >
       <span>{name}</span>
       <span>{count}</span>
     </Selector>
@@ -17,7 +24,7 @@ const Filter = ({ languages }: IFilterProps) => {
   return (
     <Container>
       {selectors}
-      <Cleaner>Limpar</Cleaner>
+      <Cleaner onClick={() => onClick && onClick('')}>Limpar</Cleaner>
     </Container>
   );
 };

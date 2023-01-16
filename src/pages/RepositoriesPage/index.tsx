@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Container, Sidebar, Main } from './styles';
 import Profile from '../../components/Profile';
@@ -9,6 +9,7 @@ import Repositories from '../../components/Repositories';
 import { getLangsFrom } from '../../services/getLangsFrom';
 
 const RepositoriesPage = () => {
+  const [currentLanguage, setCurrentLanguage] = useState('');
   const user = {
     name: 'Elivelton Ferreira',
     login: 'eliveltonsf',
@@ -74,14 +75,18 @@ const RepositoriesPage = () => {
 
   const languages = getLangsFrom({ repositories });
 
+  const onFilterClick = (language: string) => {
+    !language ? setCurrentLanguage('') : setCurrentLanguage(language);
+  };
+
   return (
     <Container>
       <Sidebar>
         <Profile user={user} />
-        <Filter languages={languages} />
+        <Filter languages={languages} currentLanguage={currentLanguage} onClick={onFilterClick} />
       </Sidebar>
       <Main>
-        <Repositories repositories={repositories} />
+        <Repositories repositories={repositories} currentLanguage={currentLanguage} />
       </Main>
     </Container>
   );

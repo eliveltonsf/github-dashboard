@@ -10,10 +10,13 @@ interface IRepositoriesProps {
     html_url: string;
     language: string;
   }[];
+  currentLanguage: string;
 }
 
-const Repositories = ({ repositories }: IRepositoriesProps) => {
-  const repos = repositories.map((repository) => <Repository key={repository.id} repository={repository} />);
+const Repositories = ({ repositories, currentLanguage }: IRepositoriesProps) => {
+  const repos = repositories
+    .filter((repository) => currentLanguage === '' || repository.language === currentLanguage)
+    .map((repository) => <Repository key={repository.id} repository={repository} />);
   return <Container>{repos}</Container>;
 };
 
