@@ -1,25 +1,41 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import { Container, Sidebar, Main } from './styles';
+import { Loading, Container, Sidebar, Main } from './styles';
 import Profile from '../../components/Profile';
 import Filter from '../../components/Filter';
 import Repositories from '../../components/Repositories';
 
 import { getLangsFrom } from '../../services/getLangsFrom';
 
+import { getUser } from '../../services/api';
+
 const RepositoriesPage = () => {
+  const [user, setUser] = useState('');
   const [currentLanguage, setCurrentLanguage] = useState('');
-  const user = {
-    name: 'Elivelton Ferreira',
-    login: 'eliveltonsf',
-    avatar_url: 'https://avatars.githubusercontent.com/u/17456800?v=4',
-    followers: 36,
-    following: 59,
-    company: '',
-    blog: '',
-    location: 'Fortaleza - CE',
-  };
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadData = async () => {
+      const [userResponse] = await Promise.all([getUser('eliveltonsf')]);
+
+      setUser(userResponse.data);
+      setLoading(false);
+    };
+
+    loadData();
+  }, []);
+
+  // const user = {
+  //   name: 'Elivelton Ferreira',
+  //   login: 'eliveltonsf',
+  //   avatar_url: 'https://avatars.githubusercontent.com/u/17456800?v=4',
+  //   followers: 36,
+  //   following: 59,
+  //   company: '',
+  //   blog: '',
+  //   location: 'Fortaleza - CE',
+  // };
 
   const repositories = [
     {
@@ -78,6 +94,10 @@ const RepositoriesPage = () => {
   const onFilterClick = (language: string) => {
     !language ? setCurrentLanguage('') : setCurrentLanguage(language);
   };
+
+  if (loading) {
+    return <Loading>Carregando...</Loading>;
+  }
 
   return (
     <Container>
