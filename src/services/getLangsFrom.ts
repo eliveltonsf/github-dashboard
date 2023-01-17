@@ -2,7 +2,7 @@
 import { langColors } from './config';
 
 interface IgetLangsFrom {
-  repositories: {
+  repoFilter: {
     id: number;
     name: string;
     description: string;
@@ -11,8 +11,8 @@ interface IgetLangsFrom {
   }[];
 }
 
-export const getLangsFrom = ({ repositories }: IgetLangsFrom) => {
-  const stats = repositories
+export const getLangsFrom = ({ repoFilter }: IgetLangsFrom) => {
+  const stats = repoFilter
     .map((repository) => repository.language)
     .reduce(
       (data, language) => ({
