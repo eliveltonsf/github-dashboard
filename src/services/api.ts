@@ -6,4 +6,6 @@ const api = axios.create({
 
 export const getUser = async (login: string) => api.get(`/users/${login}`);
 
+export const getRepos = async (login: string) => api.get(`/users/${login}/repos`);
+
 export default api;
