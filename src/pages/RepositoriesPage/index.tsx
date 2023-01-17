@@ -26,17 +26,6 @@ const RepositoriesPage = () => {
     loadData();
   }, []);
 
-  // const user = {
-  //   name: 'Elivelton Ferreira',
-  //   login: 'eliveltonsf',
-  //   avatar_url: 'https://avatars.githubusercontent.com/u/17456800?v=4',
-  //   followers: 36,
-  //   following: 59,
-  //   company: '',
-  //   blog: '',
-  //   location: 'Fortaleza - CE',
-  // };
-
   const repositories = [
     {
       id: 1,
