@@ -2,6 +2,8 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import React, { useState, useEffect, useMemo } from 'react';
 
+import { useParams } from 'react-router-dom';
+
 import { Loading, Container, Sidebar, Main } from './styles';
 import Profile from '../../components/Profile';
 import Filter from '../../components/Filter';
@@ -12,6 +14,7 @@ import { getLangsFrom } from '../../services/getLangsFrom';
 import { getUser, getRepos } from '../../services/api';
 
 const RepositoriesPage = () => {
+  const { login } = useParams();
   const [user, setUser] = useState({} as object);
   const [repos, setRepos] = useState([]);
   const [languages, setLanguages] = useState([]);
@@ -20,7 +23,7 @@ const RepositoriesPage = () => {
 
   useEffect(() => {
     const loadData = async () => {
-      const [userResponse, repositoriesResponse] = await Promise.all([getUser('eliveltonsf'), getRepos('eliveltonsf')]);
+      const [userResponse, repositoriesResponse] = await Promise.all([getUser(login), getRepos(login)]);
 
       const userData = userResponse.data;
       const reposData = repositoriesResponse.data;
