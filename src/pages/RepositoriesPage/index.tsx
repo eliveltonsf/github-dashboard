@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { useParams } from 'react-router-dom';
 
-import { Loading, Container, Sidebar, Main } from './styles';
+import { Loading, Container, Sidebar, Main, ContainerLoading } from './styles';
 import Profile from '../../components/Profile';
 import Filter from '../../components/Filter';
 import Repositories from '../../components/Repositories';
@@ -13,6 +13,8 @@ import { getLangsFrom } from '../../services/getLangsFrom';
 
 import { getUser, getRepos } from '../../services/api';
 
+import { useNavigate } from 'react-router-dom';
+
 const RepositoriesPage = () => {
   const { login } = useParams();
   const [user, setUser] = useState({} as object);
@@ -20,6 +22,8 @@ const RepositoriesPage = () => {
   const [languages, setLanguages] = useState([]);
   const [currentLanguage, setCurrentLanguage] = useState('');
   const [loading, setLoading] = useState(true);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const loadData = async () => {
@@ -69,7 +73,11 @@ const RepositoriesPage = () => {
   };
 
   if (loading) {
-    return <Loading>Carregando...</Loading>;
+    return (
+      <ContainerLoading>
+        <Loading />
+      </ContainerLoading>
+    );
   }
 
   return (

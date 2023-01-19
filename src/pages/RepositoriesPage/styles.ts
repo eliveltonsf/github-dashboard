@@ -1,11 +1,19 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import styled from 'styled-components';
+import BeatLoader from 'react-spinners/BeatLoader';
 
-export const Loading = styled.div`
+export const ContainerLoading = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100;
+  height: 100vh;
 `;
+
+export const Loading = styled(BeatLoader).attrs((props) => ({
+  color: `${props.theme.defaultColors.light}`,
+  size: 20,
+}))``;
 
 export const Container = styled.main`
   display: flex;
@@ -21,6 +29,27 @@ export const Sidebar = styled.aside`
   min-width: 20rem;
   max-height: 100vh;
   overflow-y: hidden;
+
+  &:hover {
+    position: relative;
+    overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: black transparent;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+      margin: 5px; /* A altura só é vista quando a rolagem é horizontal */
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #fff;
+      border-radius: 50px;
+    }
+  }
 `;
 
 export const Main = styled.section`
@@ -36,5 +65,26 @@ export const Main = styled.section`
 
   @media screen and (max-width: ${(props) => props.theme.breakpoints.sm}) {
     padding: 40px 20px;
+  }
+
+  &:hover {
+    position: relative;
+    overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: black transparent;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+      margin: 5px; /* A altura só é vista quando a rolagem é horizontal */
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #fff;
+      border-radius: 50px;
+    }
   }
 `;
