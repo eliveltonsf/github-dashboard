@@ -51,6 +51,13 @@ export const Cleaner = styled.button`
   text-align: left;
   padding: 1rem;
 
+  display: flex;
+  align-items: center;
+
+  svg {
+    margin-right: 5px;
+  }
+
   &:hover {
     color: rgba(255, 255, 255, 0.5);
   }

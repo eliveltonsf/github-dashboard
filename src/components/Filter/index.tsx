@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Container, Selector, Cleaner } from './styles';
+import { MdOutlineFilterAlt } from 'react-icons/md';
 
 interface IFilterProps {
   languages: { name: string; count: number; color: string }[];
@@ -24,7 +25,10 @@ const Filter = ({ languages, currentLanguage, onClick }: IFilterProps) => {
   return (
     <Container>
       {selectors}
-      <Cleaner onClick={() => onClick && onClick('')}>Limpar</Cleaner>
+      <Cleaner onClick={() => onClick && onClick('')}>
+        <MdOutlineFilterAlt size={20} />
+        Limpar
+      </Cleaner>
     </Container>
   );
 };
