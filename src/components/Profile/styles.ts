@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -8,10 +9,27 @@ export const Header = styled.div`
   display: Flex;
   flex-direction: column;
   padding: 1rem 0;
+  position: relative;
 
   @media screen and (max-width: ${(props) => props.theme.breakpoints.md}) {
     flex-direction: row;
     align-items: center;
+  }
+`;
+
+export const Exit = styled(Link)`
+  position: absolute;
+  display: flex;
+  align-items: center;
+  right: 0;
+  text-decoration: none;
+
+  svg {
+    margin-left: 5px;
+  }
+
+  @media screen and (max-width: ${(props) => props.theme.breakpoints.sm}) {
+    top: 1rem;
   }
 `;
 

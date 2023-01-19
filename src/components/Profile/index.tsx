@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 
-import { MdGroup, MdLocationCity, MdWork, MdLink } from 'react-icons/md';
+import { MdGroup, MdLocationCity, MdWork, MdLink, MdOutlineExitToApp } from 'react-icons/md';
 
-import { Container, Header, Avatar, Login, Name, Inner, Data } from './styles';
+import { Container, Header, Exit, Avatar, Login, Name, Inner, Data } from './styles';
 
 export interface IProfileProps {
   user: {
@@ -22,7 +22,12 @@ const Profile = ({ user }: IProfileProps) => {
   return (
     <Container>
       <Header>
+        <Exit to={'/'}>
+          Voltar
+          <MdOutlineExitToApp size={20} />
+        </Exit>
         <Avatar src={user.avatar_url} alt={user.name}></Avatar>
+
         <Login>{user.login}</Login>
         <Name>{user.name}</Name>
       </Header>
