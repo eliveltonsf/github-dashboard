@@ -13,8 +13,6 @@ import { getLangsFrom } from '../../services/getLangsFrom';
 
 import { getUser, getRepos } from '../../services/api';
 
-import { useNavigate } from 'react-router-dom';
-
 const RepositoriesPage = () => {
   const { login } = useParams();
   const [user, setUser] = useState({} as object);
@@ -22,8 +20,6 @@ const RepositoriesPage = () => {
   const [languages, setLanguages] = useState([]);
   const [currentLanguage, setCurrentLanguage] = useState('');
   const [loading, setLoading] = useState(true);
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     const loadData = async () => {
